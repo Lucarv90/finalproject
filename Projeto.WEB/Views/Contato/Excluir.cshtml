@@ -1,0 +1,63 @@
+﻿@model Projeto.WEB.Models.ContatoExclusaoModel
+
+@{
+    ViewBag.Title = "Excluir";
+
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        @using (Html.BeginForm())
+        {
+            <div class="modal-header bg-danger">
+                <button type="button" class="close" data-dissmiss="modal"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Excluir Contato</h4>
+            </div>
+
+            @Html.AntiForgeryToken()
+
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdContato, new { @class = "control-label col-md-4" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.IdContato, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.IdContato)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nome, new { @class = "control-label col-md-4" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Nome)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Telefone, new { @class = "control-label col-md-4" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Telefone, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Telefone)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-4" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+                <input type="button" value="Cancelar" class="btn btn-danger" data-dissmiss="modal" />
+            </div>
+        }
+    </div><!--/.modal-content-->
+</div><!--/.modal-dialog-->
+

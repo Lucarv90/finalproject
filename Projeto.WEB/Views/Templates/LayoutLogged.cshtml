@@ -1,0 +1,78 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Projeto Final</title>
+
+    <!--Bootstrap-->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+    <!--Jscript-->
+    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+
+</head>
+<body class="container">
+    <nav class="navbar">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="container">
+                <nav class="navbar-header">
+                    <a class="navbar-brand" href="/Logged/Index">Agenda Virtual</a>
+                </nav>
+
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/Logged/Index">Tarefas</a></li>
+                        <li><a href="/Tarefa/Cadastro">Cadastrar Tarefa</a></li>
+                        <li><a href="/Contato/Cadastro">Cadastrar Contato</a></li>
+                        <li><a href="/Contato/Consulta"><span class="glyphicon glyphicon-search"></span>Contatos</a></li>
+                    </ul>
+
+                    <div class="navbar-text navbar-right">
+                        @using Projeto.Entidades
+                        @{
+                            //resgatar o usuario da sessão..
+                            Usuario u = Session["usuario"] as Usuario;
+                        }
+
+                        Bem vindo: <strong>@u.Login</strong> &nbsp;
+
+                    </div>
+
+                    <nav class="navbar-collapse navbar-right">
+                        <a href="/Home/Logout" class="btn btn-danger navbar-btn">
+                            Sair
+                        </a>
+                    </nav>
+
+                </div>
+
+            </div>
+        </nav>
+    </nav>
+
+
+    <br />
+    <br />
+    
+
+    <div class="row">
+        <div class="col-md-12">
+            @RenderBody()
+        </div>
+
+    </div>
+</body>
+</html>
+
+<script>
+    $(".nav a").on("click", function () {
+        $(".nav").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+    });
+</script>

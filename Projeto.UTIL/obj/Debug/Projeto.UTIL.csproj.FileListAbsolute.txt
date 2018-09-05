@@ -1,0 +1,5 @@
+F:\C# Estudos\Projeto Final\Projeto Final\AgendaVirtual\AgendaVirtual\Projeto.UTIL\bin\Debug\Projeto.UTIL.dll
+F:\C# Estudos\Projeto Final\Projeto Final\AgendaVirtual\AgendaVirtual\Projeto.UTIL\bin\Debug\Projeto.UTIL.pdb
+F:\C# Estudos\Projeto Final\Projeto Final\AgendaVirtual\AgendaVirtual\Projeto.UTIL\obj\Debug\Projeto.UTIL.dll
+F:\C# Estudos\Projeto Final\Projeto Final\AgendaVirtual\AgendaVirtual\Projeto.UTIL\obj\Debug\Projeto.UTIL.pdb
+F:\C# Estudos\Projeto Final\Projeto Final\AgendaVirtual\AgendaVirtual\Projeto.UTIL\obj\Debug\Projeto.UTIL.csprojResolveAssemblyReference.cache

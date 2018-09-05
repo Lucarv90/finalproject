@@ -1,0 +1,51 @@
+﻿@model Projeto.WEB.Models.UsuarioLoginModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Templates/Layout.cshtml";
+}
+
+
+
+<h4>Bem vindo a Agenda Virtual</h4>
+      
+
+    <div class="row">
+        <div class="col-md-4">
+            @using (Html.BeginForm())
+            {
+                <label>Login de Acesso:</label>
+                @Html.TextBoxFor(model => model.Login,
+                 new { @class = "form-control", @placeholder= "Nome de Usuário" })                
+                <span class="text-danger focus">
+                    @Html.ValidationMessageFor(model => model.Login)
+                </span>
+                <br />
+
+                <label>Senha de Acesso:</label>
+                @Html.TextBoxFor(model => model.Senha,
+                 new { @class = "form-control", @type = "password", @placeholder = "Senha" })
+                <span class="text-danger focus">
+                    @Html.ValidationMessageFor(model => model.Senha)
+                </span>
+                <br />
+
+                <br />
+                <input type="submit" value="Login"
+                       class="btn btn-success" />
+                    
+                    <a href="/Usuario/Cadastro" class="btn btn-primary">Cadastrar</a>
+                    <br />
+                    <br />
+
+                    <strong>
+                        @ViewBag.Mensagem
+                    </strong>
+
+            }                     
+                         
+                
+                           
+            </div>
+        </div>
+            

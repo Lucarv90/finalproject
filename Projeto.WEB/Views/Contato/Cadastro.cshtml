@@ -1,0 +1,61 @@
+﻿@model Projeto.WEB.Models.ContatoCadastroModel
+
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Templates/LayoutLogged.cshtml";
+}
+
+
+<a href="/Logged/Index" class="btn btn-default">
+    <span class="glyphicon glyphicon-arrow-left"></span> Início
+</a>
+<br/>
+<br />
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            <label>Nome:</label>
+            @Html.TextBoxFor(model => model.Nome,
+                 new { @class = "form-control" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Nome)
+            </span>
+            <br />
+
+            <label>Email:</label>
+            @Html.TextBoxFor(model => model.Email,
+                 new { @type = "email", @class = "form-control" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Email)
+            </span>
+            <br />
+
+            <label>Telefone:</label>
+            @Html.TextBoxFor(model => model.Telefone,
+                 new { @type = "tel", @class = "form-control" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Telefone)
+            </span>
+            <br />
+
+
+            <br />
+            <input type="submit" value="Cadastrar Contato"
+                   class="btn btn-success" />
+                <br />
+
+                <br />
+                <strong>
+                    @ViewBag.Mensagem
+                </strong>
+        }
+
+
+
+
+    </div>
+</div>

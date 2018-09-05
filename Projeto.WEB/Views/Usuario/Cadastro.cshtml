@@ -1,0 +1,70 @@
+﻿@model Projeto.WEB.Models.UsuarioCadastroModel
+
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Templates/Layout.cshtml";
+}
+
+
+<h4>Cadastre-se: É gratuito e sempre será!</h4>
+
+<a href="/Home/Index">Tela de Acesso</a>
+<hr/>
+
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            <label>Nome do Usuário:</label>
+            @Html.TextBoxFor(model => model.NomeUsr,
+                 new { @class = "form-control" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(Model => Model.NomeUsr)
+            </span>
+            <br />
+
+            <label>Login:</label>
+            @Html.TextBoxFor(model => model.Login,
+                 new { @class = "form-control" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Login)
+            </span>
+            <br />
+
+            <label>Senha:</label>
+            @Html.TextBoxFor(model => model.Senha,
+                 new { @class = "form-control", @type = "password" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Senha)
+            </span>
+            <br />
+
+            <label>Confirme a sua senha:</label>
+            @Html.TextBoxFor(model => model.SenhaConfirm,
+                 new { @class = "form-control", @type = "password" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.SenhaConfirm)
+            </span>
+            <br />
+
+            <br />
+            <input type="submit" value="Cadastrar Usuário"
+                   class="btn btn-success glyphicon glyphicon-check" />
+                <br />
+
+                <br />
+                <strong>
+                    @ViewBag.Mensagem
+                </strong>
+        }
+
+
+            
+        
+    </div>
+</div>
+
+
+
+

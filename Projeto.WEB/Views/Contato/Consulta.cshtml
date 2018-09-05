@@ -1,0 +1,114 @@
+﻿@model List<Projeto.WEB.Models.ConsultaContatoModel>
+
+@{
+    ViewBag.Title = "Consulta";
+
+    Layout = "~/Views/Templates/LayoutLogged.cshtml";
+}
+
+<a href="/Logged/Index" class="btn btn-default">
+    <span class="glyphicon glyphicon-arrow-left"></span> Início
+</a>
+<br />
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nome do Contato</th>
+            <th>Email do Contato</th>
+            <th>Telefone</th>
+            <th>Operações</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.IdContato </td>
+                <td> @item.Nome </td>
+                <td> @item.Email</td>
+                <td> @item.Telefone</td>
+
+                <td>
+                    <button class="btn btn-primary edit" data-id="@item.IdContato"><i class="glyphicon glyphicon-edit"></i></button>
+                    <button class="btn btn-danger delete" data-id="@item.IdContato"><i class="glyphicon glyphicon-trash"></i></button>
+                   
+                </td>
+            </tr>
+
+        }
+
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5">Quantidade de registros: @Model.Count </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="modal" id="modalEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div> 
+</div>
+
+<div class="modal" id="modalDel">
+
+</div>
+
+@section scripts{
+
+    <script>
+
+
+        function excluirContato() {
+            $.ajax({
+                type: 'POST',
+                url: '/Contato/Excluir',
+                data: 'id=' + $("#data-id").html(),
+                success: function (d) {
+                    if (d.result == "sucesso") {
+                        $("#mensagem").html(d.msg);
+                        consultarContatos();
+                    }
+                    else if (d.result == "erro") {
+                        $("#mensagem").html(d.msg);
+                    }
+                },
+                error: function (e) {
+                    $("#mensagem").html("Erro: " + e.status);
+                }
+            });
+        };
+    
+    $(function(){
+
+        $(".edit").click(function () {
+            var id = $(this).attr("data-id");
+            $("#modalEdit").load("Edicao?id=" + id, function () {
+                $("#modalEdit").modal();
+            })
+
+        });
+
+        $(".delete").click(function () {
+            var id = $(this).attr("data-id");
+            $("#modalDel").load("Excluir?id=" + id, function () {
+                $("#modalDel").modal();
+            })
+
+        });
+                
+
+    })
+
+
+    </script>
+    }
